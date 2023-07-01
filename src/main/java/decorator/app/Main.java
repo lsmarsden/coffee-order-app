@@ -1,7 +1,7 @@
 package decorator.app;
 
+import decorator.ui.UI;
 import javafx.application.Application;
-import org.example.decorator.ui.UI;
 
 public class Main {
 

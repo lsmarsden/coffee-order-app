@@ -1,13 +1,13 @@
 package decorator.ui;
 
+import decorator.Coffee;
+import decorator.CoffeeBuilder;
+import decorator.SimpleCoffee;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.GridPane;
-import org.example.decorator.Coffee;
-import org.example.decorator.CoffeeBuilder;
-import org.example.decorator.SimpleCoffee;
 
 public class OrderView extends GenericView {
     private Spinner<Integer> milkQuantitySpinner;
