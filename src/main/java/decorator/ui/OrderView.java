@@ -1,18 +1,28 @@
 package decorator.ui;
 
-import decorator.Coffee;
-import decorator.CoffeeBuilder;
-import decorator.SimpleCoffee;
+import decorator.*;
+import hibernate.HibernateUtil;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.GridPane;
+import order.model.Order;
+import repository.IOrderRepository;
+import repository.OrderRepository;
 
-public class OrderView extends GenericView {
+public class OrderView extends GenericView implements IOrderView {
     private Spinner<Integer> milkQuantitySpinner;
     private Spinner<Integer> sugarQuantitySpinner;
 
+    private IOrderRepository orderRepository = new OrderRepository(HibernateUtil.getSessionFactory());
+
+    private IOrderService orderService = new OrderService(orderRepository);
+
+    private IOrderPresenter orderPresenter = new OrderPresenter(orderService, this);
+
+    private Label costLabel = new Label();
+    private Label descriptionLabel = new Label();
 
     public OrderView(SceneManager sceneManager) {
         super(sceneManager);
@@ -20,25 +30,25 @@ public class OrderView extends GenericView {
         show();
     }
 
+    @Override
     public void show() {
-        Label costLabel = new Label();
-        Label descriptionLabel = new Label();
-
         GridPane toppingsGrid = createToppingsGrid();
 
         Button submitButton = new Button("Submit");
-        submitButton.setOnAction(e -> {
-            Coffee coffee = new SimpleCoffee();
-
-            Coffee builtCoffee = CoffeeBuilder.builder(coffee)
-                    .milk(milkQuantitySpinner.getValue())
-                    .sugar(sugarQuantitySpinner.getValue())
-                    .build();
-            costLabel.setText("Cost: £" + builtCoffee.getCost());
-            descriptionLabel.setText("Order details: " + builtCoffee.getDescription());
-        });
+        submitButton.setOnAction(e -> orderPresenter.submitOrder(milkQuantitySpinner.getValue(), sugarQuantitySpinner.getValue()));
 
         root.getChildren().addAll(toppingsGrid, submitButton, costLabel, descriptionLabel);
+    }
+
+    @Override
+    public void displayOrderDetails(Order order) {
+        costLabel.setText("Cost: £" + order.getCost());
+        descriptionLabel.setText("Order details: " + order.getDescription());
+    }
+
+    @Override
+    public void setOrderPresenter(IOrderPresenter orderPresenter) {
+        this.orderPresenter = orderPresenter;
     }
 
     private GridPane createToppingsGrid() {
