@@ -1,5 +1,8 @@
-package decorator;
+package order.service;
 
+import decorator.Coffee;
+import decorator.CoffeeBuilder;
+import decorator.SimpleCoffee;
 import lombok.RequiredArgsConstructor;
 import order.model.Order;
 import repository.IOrderRepository;

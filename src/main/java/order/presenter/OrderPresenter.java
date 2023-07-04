@@ -1,5 +1,7 @@
-package decorator;
+package order.presenter;
 
+import order.service.IOrderService;
+import decorator.ui.IOrderView;
 import order.model.Order;
 
 public class OrderPresenter implements IOrderPresenter {

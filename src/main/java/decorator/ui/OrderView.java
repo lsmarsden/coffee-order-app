@@ -1,6 +1,5 @@
 package decorator.ui;
 
-import decorator.*;
 import hibernate.HibernateUtil;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,6 +7,10 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.GridPane;
 import order.model.Order;
+import order.presenter.IOrderPresenter;
+import order.presenter.OrderPresenter;
+import order.service.IOrderService;
+import order.service.OrderService;
 import repository.IOrderRepository;
 import repository.OrderRepository;
 

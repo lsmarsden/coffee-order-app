@@ -1,4 +1,4 @@
-package decorator;
+package order.service;
 
 import order.model.Order;
 

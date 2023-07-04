@@ -1,5 +1,6 @@
-package decorator;
+package decorator.ui;
 
+import order.presenter.IOrderPresenter;
 import order.model.Order;
 
 public interface IOrderView {
