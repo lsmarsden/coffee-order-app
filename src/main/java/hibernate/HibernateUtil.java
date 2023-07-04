@@ -3,6 +3,7 @@ package hibernate;
 import order.model.Order;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import user.model.User;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
@@ -10,12 +11,14 @@ public class HibernateUtil {
     static {
         try {
             Configuration hibernateConfig = new Configuration();
-            hibernateConfig.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-            hibernateConfig.setProperty("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
-            hibernateConfig.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/test");
-            hibernateConfig.setProperty("hibernate.connection.username", "root");
-            hibernateConfig.setProperty("hibernate.connection.password", "");
-            hibernateConfig.addAnnotatedClass(Order.class);
+            hibernateConfig.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect")
+                    .setProperty("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver")
+                    .setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/test")
+                    .setProperty("hibernate.connection.username", "root")
+                    .setProperty("hibernate.connection.password", "")
+                    .setProperty("hibernate.hbm2ddl.auto", "update")
+                    .addAnnotatedClass(Order.class)
+                    .addAnnotatedClass(User.class);
 
             sessionFactory = hibernateConfig.buildSessionFactory();
         } catch (Exception e) {

@@ -6,14 +6,22 @@ import lombok.Getter;
 public class MenuView extends GenericView {
 
     @Getter
-    private Button startOrderButton;
+    private Button startOrderButton = new Button("Start order");
+
+    private Button loginButton = new Button("Log in");
+    private Button registerButton = new Button("Register");
 
     public MenuView(SceneManager sceneManager) {
         super(sceneManager);
-        startOrderButton = new Button("Start order");
 
+        show();
+    }
+
+    public void show() {
         startOrderButton.setOnAction(e -> sceneManager.switchScene(new OrderView(sceneManager)));
+        loginButton.setOnAction(e -> sceneManager.switchScene(new LoginView(sceneManager)));
+        registerButton.setOnAction(e -> sceneManager.switchScene(new RegisterView(sceneManager)));
 
-        root.getChildren().add(startOrderButton);
+        root.getChildren().addAll(startOrderButton, loginButton, registerButton);
     }
 }

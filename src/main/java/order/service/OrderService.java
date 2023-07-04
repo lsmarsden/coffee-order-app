@@ -5,7 +5,7 @@ import decorator.CoffeeBuilder;
 import decorator.SimpleCoffee;
 import lombok.RequiredArgsConstructor;
 import order.model.Order;
-import repository.IOrderRepository;
+import order.repository.IOrderRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

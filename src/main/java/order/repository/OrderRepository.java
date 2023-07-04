@@ -1,4 +1,4 @@
-package repository;
+package order.repository;
 
 import order.model.Order;
 import org.hibernate.Session;

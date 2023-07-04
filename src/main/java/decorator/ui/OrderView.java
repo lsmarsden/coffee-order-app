@@ -11,8 +11,8 @@ import order.presenter.IOrderPresenter;
 import order.presenter.OrderPresenter;
 import order.service.IOrderService;
 import order.service.OrderService;
-import repository.IOrderRepository;
-import repository.OrderRepository;
+import order.repository.IOrderRepository;
+import order.repository.OrderRepository;
 
 public class OrderView extends GenericView implements IOrderView {
     private Spinner<Integer> milkQuantitySpinner;
