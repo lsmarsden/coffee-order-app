@@ -2,6 +2,9 @@ package user.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import order.model.Order;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -16,4 +19,7 @@ public class User {
 
     @Column(nullable = false)
     private String passwordHash;
+
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL)
+    private List<Order> orders;
 }

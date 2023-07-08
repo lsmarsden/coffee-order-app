@@ -3,6 +3,7 @@ package order.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import user.model.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -23,4 +24,8 @@ public class Order {
 
     @Column(name = "order_date")
     private LocalDateTime orderDate;
+
+    @ManyToOne
+    @JoinColumn(name = "created_by", nullable = false)
+    private User createdBy;
 }

@@ -9,18 +9,27 @@ import javafx.scene.layout.GridPane;
 import order.model.Order;
 import order.presenter.IOrderPresenter;
 import order.presenter.OrderPresenter;
-import order.service.IOrderService;
-import order.service.OrderService;
 import order.repository.IOrderRepository;
 import order.repository.OrderRepository;
+import order.service.IOrderService;
+import order.service.OrderService;
+import org.hibernate.SessionFactory;
+import user.repository.IUserRepository;
+import user.repository.UserRepository;
+import user.service.IUserService;
+import user.service.UserService;
 
 public class OrderView extends GenericView implements IOrderView {
     private Spinner<Integer> milkQuantitySpinner;
     private Spinner<Integer> sugarQuantitySpinner;
 
-    private IOrderRepository orderRepository = new OrderRepository(HibernateUtil.getSessionFactory());
+    private SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    private IOrderRepository orderRepository = new OrderRepository(sessionFactory);
 
-    private IOrderService orderService = new OrderService(orderRepository);
+    private IUserRepository userRepository = new UserRepository(sessionFactory);
+    private IUserService userService = new UserService(userRepository);
+
+    private IOrderService orderService = new OrderService(orderRepository, userService);
 
     private IOrderPresenter orderPresenter = new OrderPresenter(orderService, this);
 

@@ -6,6 +6,7 @@ import decorator.SimpleCoffee;
 import lombok.RequiredArgsConstructor;
 import order.model.Order;
 import order.repository.IOrderRepository;
+import user.service.IUserService;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,6 +15,8 @@ import java.time.LocalDateTime;
 public class OrderService implements IOrderService {
 
     private final IOrderRepository orderRepository;
+
+    private final IUserService userService;
 
     @Override
     public Order createOrder(int milkQuantity, int sugarQuantity) {
@@ -27,6 +30,7 @@ public class OrderService implements IOrderService {
         order.setCost(BigDecimal.valueOf(coffee.getCost()));
         order.setOrderDate(LocalDateTime.now());
         order.setDescription(coffee.getDescription());
+        order.setCreatedBy(userService.getCurrentUser());
 
         return orderRepository.save(order);
     }

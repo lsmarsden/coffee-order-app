@@ -1,6 +1,8 @@
 package user.service;
 
 import lombok.RequiredArgsConstructor;
+import session.ISessionManager;
+import session.SessionManager;
 import user.model.User;
 import user.repository.IUserRepository;
 
@@ -8,6 +10,8 @@ import user.repository.IUserRepository;
 public class UserService implements IUserService {
 
     private final IUserRepository userRepository;
+
+    private final ISessionManager sessionManager = SessionManager.getInstance();
 
     @Override
     public User register(String username, String password) {
@@ -19,6 +23,11 @@ public class UserService implements IUserService {
         user.setPasswordHash(passwordHash);
 
         return userRepository.save(user);
+    }
+
+    @Override
+    public User getCurrentUser() {
+        return sessionManager.getCurrentUser();
     }
 
     private String hashPassword(String password) {
