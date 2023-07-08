@@ -25,4 +25,9 @@ public abstract class GenericView extends Scene {
 
     public abstract void show();
 
+    public void refresh() {
+        mainLayout.getChildren().clear();
+        show();
+    }
+
 }
