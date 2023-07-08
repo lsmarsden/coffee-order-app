@@ -21,13 +21,12 @@ public class LoginView extends GenericView implements ILoginView {
     private TextField usernameTextField = new TextField("username");
     private TextField passwordTextField = new TextField("password");
     private Button submitButton = new Button("Submit");
+    private Button registerButton = new Button("Register");
 
     private Alert alert = new Alert(Alert.AlertType.ERROR);
 
     public LoginView(SceneManager sceneManager) {
         super(sceneManager);
-
-        show();
     }
 
     @Override
@@ -45,7 +44,10 @@ public class LoginView extends GenericView implements ILoginView {
             sceneManager.switchScene(new OrderView(sceneManager));
         });
 
-        root.getChildren().addAll(usernameTextField, passwordTextField, submitButton);
+        registerButton.setOnAction(e -> sceneManager.switchScene(new RegisterView(sceneManager)));
+
+
+        root.getChildren().addAll(usernameTextField, passwordTextField, submitButton, registerButton);
     }
 
     public void displayLoginError() {

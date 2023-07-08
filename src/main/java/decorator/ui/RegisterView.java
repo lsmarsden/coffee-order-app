@@ -2,13 +2,12 @@ package decorator.ui;
 
 import hibernate.HibernateUtil;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import user.repository.IUserRepository;
 import user.repository.UserRepository;
 import user.service.UserService;
 
-public class RegisterView extends GenericView {
+public class RegisterView extends GenericView implements IRegisterView {
 
     private final IUserRepository userRepository = new UserRepository(HibernateUtil.getSessionFactory());
     private final UserService userService = new UserService(userRepository);
@@ -19,8 +18,6 @@ public class RegisterView extends GenericView {
 
     public RegisterView(SceneManager sceneManager) {
         super(sceneManager);
-
-        show();
     }
 
     public void show() {

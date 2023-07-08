@@ -38,8 +38,6 @@ public class OrderView extends GenericView implements IOrderView {
 
     public OrderView(SceneManager sceneManager) {
         super(sceneManager);
-
-        show();
     }
 
     @Override

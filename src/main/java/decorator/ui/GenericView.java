@@ -17,4 +17,6 @@ public abstract class GenericView extends Scene {
         this.sceneManager = sceneManager;
     }
 
+    public abstract void show();
+
 }

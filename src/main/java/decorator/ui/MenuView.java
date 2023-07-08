@@ -13,8 +13,6 @@ public class MenuView extends GenericView {
 
     public MenuView(SceneManager sceneManager) {
         super(sceneManager);
-
-        show();
     }
 
     public void show() {
