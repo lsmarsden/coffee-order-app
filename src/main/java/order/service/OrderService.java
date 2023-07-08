@@ -6,10 +6,12 @@ import decorator.SimpleCoffee;
 import lombok.RequiredArgsConstructor;
 import order.model.Order;
 import order.repository.IOrderRepository;
+import user.model.User;
 import user.service.IUserService;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RequiredArgsConstructor
 public class OrderService implements IOrderService {
@@ -33,5 +35,13 @@ public class OrderService implements IOrderService {
         order.setCreatedBy(userService.getCurrentUser());
 
         return orderRepository.save(order);
+    }
+
+    @Override
+    public List<Order> getOrderHistory() {
+
+        User currentUser = userService.getCurrentUser();
+
+        return orderRepository.getOrderHistory(currentUser);
     }
 }

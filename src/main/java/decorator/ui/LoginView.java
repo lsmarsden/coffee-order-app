@@ -18,8 +18,9 @@ public class LoginView extends GenericView implements ILoginView {
 
 
     private ILoginPresenter loginPresenter = new LoginPresenter(this, loginService);
-    private TextField usernameTextField = new TextField("username");
-    private TextField passwordTextField = new TextField("password");
+
+    private TextField usernameTextField = new TextField();
+    private TextField passwordTextField = new TextField();
     private Button submitButton = new Button("Submit");
     private Button registerButton = new Button("Register");
 
@@ -35,6 +36,10 @@ public class LoginView extends GenericView implements ILoginView {
     }
 
     public void show() {
+
+        usernameTextField.setPromptText("username");
+        passwordTextField.setPromptText("password");
+
         submitButton.setOnAction(e -> {
             boolean authenticated = loginPresenter.authenticate(usernameTextField.getText(), passwordTextField.getText());
             if (!authenticated) {
@@ -45,9 +50,7 @@ public class LoginView extends GenericView implements ILoginView {
         });
 
         registerButton.setOnAction(e -> sceneManager.switchScene(new RegisterView(sceneManager)));
-
-
-        root.getChildren().addAll(usernameTextField, passwordTextField, submitButton, registerButton);
+        mainLayout.getChildren().addAll(usernameTextField, passwordTextField, submitButton, registerButton);
     }
 
     public void displayLoginError() {

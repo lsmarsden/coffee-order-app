@@ -12,8 +12,8 @@ public class RegisterView extends GenericView implements IRegisterView {
     private final IUserRepository userRepository = new UserRepository(HibernateUtil.getSessionFactory());
     private final UserService userService = new UserService(userRepository);
     private final RegisterPresenter registerPresenter = new RegisterPresenter(userService);
-    private TextField usernameTextField = new TextField("username");
-    private TextField passwordTextField = new TextField("password");
+    private TextField usernameTextField = new TextField();
+    private TextField passwordTextField = new TextField();
     private Button submitButton = new Button("Submit");
 
     public RegisterView(SceneManager sceneManager) {
@@ -22,11 +22,14 @@ public class RegisterView extends GenericView implements IRegisterView {
 
     public void show() {
 
+        usernameTextField.setPromptText("username");
+        passwordTextField.setPromptText("password");
+
         submitButton.setOnAction(e -> {
             registerPresenter.registerUser(usernameTextField.getText(), passwordTextField.getText());
             sceneManager.switchScene(new OrderView(sceneManager));
         });
 
-        root.getChildren().addAll(usernameTextField, passwordTextField, submitButton);
+        mainLayout.getChildren().addAll(usernameTextField, passwordTextField, submitButton);
     }
 }

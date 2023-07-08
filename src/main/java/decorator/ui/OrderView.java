@@ -36,6 +36,10 @@ public class OrderView extends GenericView implements IOrderView {
     private Label costLabel = new Label();
     private Label descriptionLabel = new Label();
 
+    private Button submitButton = new Button("Submit");
+
+    private Button orderHistoryButton = new Button("OrderHistory");
+
     public OrderView(SceneManager sceneManager) {
         super(sceneManager);
     }
@@ -44,10 +48,9 @@ public class OrderView extends GenericView implements IOrderView {
     public void show() {
         GridPane toppingsGrid = createToppingsGrid();
 
-        Button submitButton = new Button("Submit");
         submitButton.setOnAction(e -> orderPresenter.submitOrder(milkQuantitySpinner.getValue(), sugarQuantitySpinner.getValue()));
-
-        root.getChildren().addAll(toppingsGrid, submitButton, costLabel, descriptionLabel);
+        orderHistoryButton.setOnAction(e -> sceneManager.switchScene(new OrderHistoryView(sceneManager)));
+        mainLayout.getChildren().addAll(toppingsGrid, submitButton, costLabel, descriptionLabel, orderHistoryButton);
     }
 
     @Override
