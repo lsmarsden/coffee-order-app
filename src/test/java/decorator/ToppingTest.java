@@ -1,6 +1,7 @@
 package decorator;
 
 import org.junit.jupiter.api.Test;
+import org.lsmarsden.decorator.Topping;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -3,6 +3,10 @@ package decorator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.lsmarsden.decorator.Coffee;
+import org.lsmarsden.decorator.CoffeeDecorator;
+import org.lsmarsden.decorator.Topping;
+import org.lsmarsden.decorator.ToppingQuantityExceededException;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 

@@ -3,6 +3,10 @@ package decorator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.lsmarsden.decorator.Coffee;
+import org.lsmarsden.decorator.MilkDecorator;
+import org.lsmarsden.decorator.SimpleCoffee;
+import org.lsmarsden.decorator.ToppingQuantityExceededException;
 
 import static org.assertj.core.api.Assertions.*;
 

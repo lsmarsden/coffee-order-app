@@ -4,6 +4,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.lsmarsden.decorator.ui.OrderView;
+import org.lsmarsden.decorator.ui.SceneManager;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.testfx.api.FxAssert;

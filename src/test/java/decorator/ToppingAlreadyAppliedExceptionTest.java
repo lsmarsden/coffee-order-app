@@ -2,6 +2,8 @@ package decorator;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.lsmarsden.decorator.Topping;
+import org.lsmarsden.decorator.ToppingAlreadyAppliedException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
