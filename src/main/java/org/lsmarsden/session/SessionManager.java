@@ -1,12 +1,9 @@
 package org.lsmarsden.session;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 import org.lsmarsden.user.model.User;
+import org.springframework.stereotype.Component;
 
 @Component
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class SessionManager implements ISessionManager {
 
     private User currentUser;

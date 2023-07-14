@@ -1,10 +1,11 @@
 package org.lsmarsden.user.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 import org.lsmarsden.session.ISessionManager;
 import org.lsmarsden.user.model.User;
 import org.lsmarsden.user.repository.IUserRepository;
+import org.lsmarsden.util.IPasswordHasher;
+import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
@@ -14,14 +15,14 @@ public class UserService implements IUserService {
 
     private final ISessionManager sessionManager;
 
+    private final IPasswordHasher passwordHasher;
+
     @Override
     public User register(String username, String password) {
 
-        String passwordHash = hashPassword(password);
-
         User user = new User();
         user.setUsername(username);
-        user.setPasswordHash(passwordHash);
+        user.setPasswordHash(passwordHasher.hashPassword(password));
 
         return userRepository.save(user);
     }
@@ -29,10 +30,5 @@ public class UserService implements IUserService {
     @Override
     public User getCurrentUser() {
         return sessionManager.getCurrentUser();
-    }
-
-    private String hashPassword(String password) {
-        StringBuilder sb = new StringBuilder(password);
-        return sb.reverse().toString();
     }
 }

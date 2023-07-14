@@ -11,8 +11,6 @@ public class ApiKeyService implements IAPIKeyService {
 
     private final IAPIKeyRepository apiKeyRepository;
 
-    private final IUserRepository userRepository;
-
     @Override
     public User getUserByApiKey(String apiKey) {
         return apiKeyRepository.findUserByApiKeyValue(apiKey);
