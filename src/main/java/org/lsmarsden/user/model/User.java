@@ -22,4 +22,7 @@ public class User {
 
     @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL)
     private List<Order> orders;
+
+    @OneToOne(mappedBy = "user")
+    private APIKey apiKey;
 }
