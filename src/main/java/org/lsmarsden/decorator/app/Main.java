@@ -2,20 +2,16 @@ package org.lsmarsden.decorator.app;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import lombok.Setter;
 import org.lsmarsden.decorator.ui.LoginView;
 import org.lsmarsden.decorator.ui.SceneManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 
-@SpringBootApplication
-public class Main extends Application implements ApplicationContextAware {
-
-    @Setter
-    private ApplicationContext applicationContext;
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, UserDetailsServiceAutoConfiguration.class})
+public class Main extends Application {
 
     private ConfigurableApplicationContext context;
 
