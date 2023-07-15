@@ -13,3 +13,4 @@ todo
 - maybe refactor some stuff
 - add repository tests? only really works with a local db so not that good  - see if we can implement
 a smaller test db instead for tests to use
+- tests from ordercontroller and above still to be done
