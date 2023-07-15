@@ -2,7 +2,6 @@ package org.lsmarsden.security;
 
 import lombok.RequiredArgsConstructor;
 import org.lsmarsden.user.model.User;
-import org.lsmarsden.user.repository.IUserRepository;
 import org.springframework.stereotype.Component;
 
 @Component
